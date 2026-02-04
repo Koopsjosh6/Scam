@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Subhekshya ❤️</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  font-family: 'Georgia', serif;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #ffdee9, #fff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.card {
+  background: white;
+  padding: 45px;
+  border-radius: 25px;
+  text-align: center;
+  max-width: 450px;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+  animation: fadeIn 2s ease;
+  position: relative;
+}
+
+h1 {
+  color: #e63946;
+  font-size: 2.5rem;
+  min-height: 60px;
+}
+
+p {
+  font-size: 1.15rem;
+  color: #333;
+  margin: 20px 0;
+}
+
+.story {
+  font-style: italic;
+  margin: 25px 0;
+}
+
+.countdown {
+  font-weight: bold;
+  color: #e63946;
+  margin: 15px 0;
+}
+
+button {
+  padding: 15px 28px;
+  border-radius: 30px;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.yes {
+  background: #e63946;
+  color: white;
+}
+
+.no {
+  background: #ffd6e8;
+  position: absolute;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.heart {
+  position: absolute;
+  bottom: -20px;
+  font-size: 20px;
+  animation: float 6s linear;
+  opacity: 0.8;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-100vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h1 id="typing"></h1>
+
+  <p>
+    Out of all the people in the world,<br>
+    I still choose <strong>you</strong>.
+  </p>
+
+  <div class="story">
+    It started with a moment.<br>
+    Then a smile.<br>
+    Then somehow… you became my favourite person.
+  </div>
+
+  <div class="countdown" id="countdown"></div>
+
+  <h2>Will you be my Valentine? 💕</h2>
+
+  <button class="yes" onclick="yesClick()">YES 💖</button>
+  <button class="no" id="noBtn">NO 🙄</button>
+</div>
+
+<script>
+const text = "Hey Subhekshya Kunwar ❤️";
+let index = 0;
+function typeText() {
+  if (index < text.length) {
+    document.getElementById("typing").innerHTML += text.charAt(index);
+    index++;
+    setTimeout(typeText, 100);
+  }
+}
+typeText();
+
+const valentine = new Date("Feb 14, 2026 00:00:00").getTime();
+setInterval(() => {
+  const now = new Date().getTime();
+  const diff = valentine - now;
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  document.getElementById("countdown").innerHTML =
+    days >= 0 ? `${days} days until Valentine’s Day 💘` : "It’s Valentine’s Day 💖";
+}, 1000);
+
+function yesClick() {
+  alert("You just made me the happiest person ❤️ Happy Valentine’s Day, Subhekshya!");
+}
+
+const noBtn = document.getElementById("noBtn");
+noBtn.addEventListener("mouseover", () => {
+  const x = Math.random() * 250;
+  const y = Math.random() * 250;
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+});
+
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "❤️";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = Math.random() * 20 + 15 + "px";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 6000);
+}, 300);
+</script>
+
+</body>
+</html>
